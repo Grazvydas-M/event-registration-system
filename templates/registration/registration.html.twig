@@ -1,0 +1,30 @@
+<head>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+</head>
+
+{% for label, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="flash-message flash-{{ label }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}
+
+<div class="back-button-wrapper">
+    <a href="{{ path('events') }}" class="back-button">← Back to Events</a>
+</div>
+
+<h2 class="registration-title">Register for {{ event.name }}</h2>
+
+<div class="event-details">
+    <p><strong class="label">Date:</strong> {{ event.date|date('Y-m-d H:i') }}</p>
+    <p><strong class="label">Location:</strong> {{ event.location }}</p>
+    <p><strong class="label">Available Spots:</strong> {{ event.availableSpots }}</p>
+</div>
+
+{{ form_start(form, {'attr': {'class': 'registration-form', 'novalidate': 'novalidate'}}) }}
+
+    {{ form_row(form.name, {'attr': {'class': 'input-field'}}) }}
+    {{ form_row(form.email, {'attr': {'class': 'input-field'}}) }}
+
+{{ form_end(form) }}
