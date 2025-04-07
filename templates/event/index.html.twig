@@ -1,0 +1,31 @@
+<head>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+</head>
+
+{% for label, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="flash-message flash-{{ label }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}
+
+<h2 class="events-title">Upcoming Events</h2>
+
+{% if events is empty %}
+    <p class="no-events">Sorry, currently there are no planned events</p>
+{% else %}
+    <div class="events-list">
+        {% for event in events %}
+            <div class="event-card">
+                <div class="event-details">
+                    <h3 class="event-name">{{ event.name }}</h3>
+                    <p><strong class="label">Date:</strong> {{ event.date|date('Y-m-d H:i') }}</p>
+                    <p><strong class="label">Location:</strong> {{ event.location }}</p>
+                    <p><strong class="label">Available Spots:</strong> {{ event.availableSpots }}</p>
+                </div>
+                <a href="{{ path('event_register', {'id': event.id}) }}" class="register-button">Register</a>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
