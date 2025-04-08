@@ -13,13 +13,22 @@ $ docker compose up -d
 ```
 Enter php container:
 ```bash
-docker exec -it symfony_php bash
+docker exec -it event_php bash
 ```
 Install packages:
 ```bash
 composer install
 ```
+Run migrations:
+```bash
+php bin/console doctrine:migrations:migrate
+```
+
 Command to create events:
 ```bash
 bin/console app:seed-event <count>
+```
+List of generated events:
+```bash
+http://localhost:8000/events
 ```
