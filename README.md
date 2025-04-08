@@ -19,8 +19,9 @@ Install packages:
 ```bash
 composer install
 ```
-Run migrations:
+Create database and run migrations:
 ```bash
+php bin/console doctrine:database:create
 php bin/console doctrine:migrations:migrate
 ```
 
