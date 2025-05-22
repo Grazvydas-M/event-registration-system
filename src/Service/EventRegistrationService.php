@@ -5,12 +5,12 @@ namespace App\Service;
 use App\Entity\Event;
 use App\Entity\Registration;
 use Doctrine\ORM\EntityManagerInterface;
+
 readonly class EventRegistrationService
 {
     public function __construct(
         private EntityManagerInterface $entityManager,
-    )
-    {
+    ) {
     }
 
     public function registerForEvent(Registration $registration, Event $event): bool
@@ -23,7 +23,7 @@ readonly class EventRegistrationService
         return true;
     }
 
-    public function checkIfAvailableSlots($event): bool
+    public function checkIfAvailableSlots(Event $event): bool
     {
         return $event->getAvailableSpots() > 0;
     }

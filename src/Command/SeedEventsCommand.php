@@ -28,7 +28,6 @@ class SeedEventsCommand extends Command
     protected function configure(): void
     {
         $this->addArgument('count', InputArgument::REQUIRED, 'Number of events to seed');
-
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
@@ -48,7 +47,7 @@ class SeedEventsCommand extends Command
 
         $this->entityManager->flush();
 
-        $output->writeln($count .' events have been successfully created.');
+        $output->writeln($count . ' events have been successfully created.');
 
         return Command::SUCCESS;
     }
