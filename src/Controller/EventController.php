@@ -14,11 +14,9 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class EventController extends AbstractController
 {
-
     public function __construct(
         private readonly EventRegistrationService $eventRegistrationService,
-    )
-    {
+    ) {
     }
 
     #[Route('/events', name: 'events')]
@@ -35,8 +33,7 @@ class EventController extends AbstractController
     public function registration(
         Request $request,
         Event $event,
-    ): Response
-    {
+    ): Response {
         $isEventAvailable = $this->eventRegistrationService->checkIfAvailableSlots($event);
 
         if (!$isEventAvailable) {
@@ -61,6 +58,5 @@ class EventController extends AbstractController
             'form' => $form->createView(),
             'event' => $event,
         ]);
-
     }
 }

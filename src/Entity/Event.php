@@ -20,7 +20,7 @@ class Event
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank]
-    #[Assert\Length(min:5 ,max: 255)]
+    #[Assert\Length(min: 5, max: 255)]
     private string $name;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
@@ -29,7 +29,7 @@ class Event
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank]
-    #[Assert\Length(min:5 ,max: 255)]
+    #[Assert\Length(min: 5, max: 255)]
     private string $location;
 
     #[ORM\Column]
@@ -105,5 +105,4 @@ class Event
     {
         $this->registrations->add($registration);
     }
-
 }
